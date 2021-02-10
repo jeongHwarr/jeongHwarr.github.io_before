@@ -12,3 +12,11 @@ main:
   #   url: /collection-archive/
   # - title: "Sitemap"
   #   url: /sitemap/
+
+sidebar-contents:
+ - title: "머신러닝"
+   children:
+     - title: "Tips"
+     - url: /categories/#tips
+ - title: "기타"
+   url: /categories/#기타

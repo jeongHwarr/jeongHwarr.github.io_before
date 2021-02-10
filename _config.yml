@@ -275,8 +275,24 @@ defaults:
       type: posts
     values:
       layout: single
-      author_profile: true
+      author_profile: false
       read_time: true
-      comments: # true
+      comments: true # 블로그 댓글 기능 true
       share: true
       related: true
+
+  # _pages
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+      read_time: false
+      comments: true
+      share: true
+      related: false
+      values:
+      sidebar:
+        title: 카테고리
+        nav: "sidebar-contents"
