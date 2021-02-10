@@ -8,6 +8,9 @@ tags:
   - optuna를 이용한 hyperparameter optimization
   - hyperparameter optimization
   - 하이퍼파라미터 최적화
+  
+toc: true
+toc_sticky: true
 ---
 
 이 포스트는 아래 원문의 내용을 참고하여 번역 및 수정한 것이다. 원문을 보고 싶으면 아래 링크에서 확인할 수 있다. 
@@ -28,7 +31,7 @@ tags:
 
 ---
 
-# Vanilla MNIST Classifier Framework
+# 1. Vanilla MNIST Classifier Framework
 
 먼저 필요한 module을 `import`하고 data loader를 만드는 것으로 시작한다. 
 
@@ -162,7 +165,7 @@ if __name__ == '__main__':
 
 ---
 
-# Enhancing the MNIST classifier framework with Optuna
+# 2. Enhancing the MNIST classifier framework with Optuna
 
 Optuna 프레임워크를 아래의 명령어를 이용하여 설치한다. Optuna는 `Study` 개체를 기반으로 한다. 이 개체에는 필요한 파라미터 공간에 대한 정보와 sampler 방법과 pruning에 대한 모든 정보가 포함되어 있다. 
 
@@ -240,7 +243,7 @@ def train_mnist(trial):
 
 ---
 
-# Optimization
+# 3. Optimization
 
 마지막 단계로 최적화 될 objective function을 정의한다. 이 포스트의 경우는 `train_mnist` 를 objective function으로 정하였고, 그 결과인 test error를 최적화 하도록 한다.
 
@@ -282,7 +285,7 @@ df.head(3)
 
 ---
 
-# Visualization
+# 4. Visualization
 
 최적의 파라미터를 찾는 것 외에도 Optuna를 통해 시각화 할 수 있다. 모든 시각화 툴은`optuna.visualization` 에 포함되어 있다. 
 
@@ -304,7 +307,7 @@ df.head(3)
 
 ---
 
-# 요약
+# 5. 요약
 
 1. 실제 학습에 사용되는 함수를 수정한다. (예시에서 `train_mnist` 함수가 이에 해당한다. ) 이 함수는 아래의 조건을 충족해야 한다.  
     - 평가 지표가 될 점수를 `return` 해야 한다. 이 함수 안에서 모델의 파라미터를 정해준다. (`trial.suggest_..` 함수 이용)
@@ -315,7 +318,7 @@ df.head(3)
 
 ---
 
-# 참고
+# 6. 참고
 
 [1] [https://towardsdatascience.com/how-to-make-your-model-awesome-with-optuna-b56d490368af](https://towardsdatascience.com/how-to-make-your-model-awesome-with-optuna-b56d490368af)
 
