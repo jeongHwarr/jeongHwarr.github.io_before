@@ -54,7 +54,10 @@ body {
     margin-right: 0;
     width: 100%;
     clear: both;
-
+    .page__meta{
+      padding-bottom:1.5em;
+        text-align:center;
+    }
     .page__content,
     .page__meta,
     .page__share {
@@ -71,7 +74,7 @@ body {
 .page__title {
   margin-top: 0;
   line-height: 1;
-
+  text-align:center;
   & + .page__meta {
     margin-top: -0.5em;
   }
@@ -88,7 +91,7 @@ body {
     border-bottom: 1px solid $border-color;
   }
 
-	h1, h2, h3, h4, h5, h6 {
+	h2, h3, h4, h5, h6 {
 		.header-link {
 			position: relative;
 			left: 0.5em;
