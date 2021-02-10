@@ -134,8 +134,6 @@ sub {
 
 img {
   /* Responsive images (ensure images don't scale beyond their parents) */
-  display: block;
-  margin: 0px auto;
   max-width: 100%; /* part 1: Set a maximum relative to the parent*/
   width: auto\9; /* IE7-8 need help adjusting responsive images*/
   height: auto; /* part 2: Scale the height according to the width, otherwise you get stretching*/
