@@ -2,11 +2,12 @@
 title: Optuna를 이용한 hyper parameter optimization
 subtitle: Optuna를 이용한 hyper parameter optimization
 categories: tips
-date: 2021-01-25 14:45:49 +0900
+date: 2021-02-10 16:45:41 +0900
 tags:
-  - optuna, 하이퍼파라미터최적화, 하이퍼파라미터, hyperparamter, hyperparameter optimization
-toc: true
-toc_sticky: true
+  - optuna
+  - optuna를 이용한 hyperparameter optimization
+  - hyperparameter optimization
+  - 하이퍼파라미터 최적화
 ---
 
 이 포스트는 아래 원문의 내용을 참고하여 번역 및 수정한 것이다. 원문을 보고 싶으면 아래 링크에서 확인할 수 있다. 
@@ -19,7 +20,7 @@ toc_sticky: true
 
 [Google Colaboratory](https://colab.research.google.com/drive/1TEILbIeyE1wW3daNWOx9rLq0Hc9TXmbV)
 
-![/assets/images/2021-01-25-Optuna를_이용한_hyper_parameter_optimization/Untitled.png](/assets/images/2021-01-25-Optuna를_이용한_hyper_parameter_optimization/Untitled.png)
+![/assets/images/2021-02-10-optuna를_이용한_hyper_parameter_optimization/untitled.png](/assets/images/2021-02-10-optuna를_이용한_hyper_parameter_optimization/untitled.png)
 
 이 게시물에서는 간단한 pytorch 신경망 훈련 스크립트를 가져와 `Optuna` 패키지(docs [here](https://optuna.readthedocs.io/en/stable/tutorial/index.html) )를 이용하여 성능을 향상 시킬 것이다.  
 
@@ -27,7 +28,7 @@ toc_sticky: true
 
 ---
 
-# 1. Vanilla MNIST Classifier Framework
+# Vanilla MNIST Classifier Framework
 
 먼저 필요한 module을 `import`하고 data loader를 만드는 것으로 시작한다. 
 
@@ -161,7 +162,7 @@ if __name__ == '__main__':
 
 ---
 
-# 2. Enhancing the MNIST classifier framework with Optuna
+# Enhancing the MNIST classifier framework with Optuna
 
 Optuna 프레임워크를 아래의 명령어를 이용하여 설치한다. Optuna는 `Study` 개체를 기반으로 한다. 이 개체에는 필요한 파라미터 공간에 대한 정보와 sampler 방법과 pruning에 대한 모든 정보가 포함되어 있다. 
 
@@ -239,7 +240,7 @@ def train_mnist(trial):
 
 ---
 
-# 3. Optimization
+# Optimization
 
 마지막 단계로 최적화 될 objective function을 정의한다. 이 포스트의 경우는 `train_mnist` 를 objective function으로 정하였고, 그 결과인 test error를 최적화 하도록 한다.
 
@@ -273,7 +274,7 @@ df.head(3)
 
 그러면 다음과 같은 결과가 출력될 것이다. 
 
-![/assets/images/2021-01-25-Optuna를_이용한_hyper_parameter_optimization/Untitled_1.png](/assets/images/2021-01-25-Optuna를_이용한_hyper_parameter_optimization/Untitled_1.png)
+![/assets/images/2021-02-10-optuna를_이용한_hyper_parameter_optimization/untitled_1.png](/assets/images/2021-02-10-optuna를_이용한_hyper_parameter_optimization/untitled_1.png)
 
 최적의 파라미터를 확인하기 위해서 `study.best_trial`및 `study.best_params`도 사용할 수 있다.
 
@@ -281,29 +282,29 @@ df.head(3)
 
 ---
 
-# 4. Visualization
+# Visualization
 
 최적의 파라미터를 찾는 것 외에도 Optuna를 통해 시각화 할 수 있다. 모든 시각화 툴은`optuna.visualization` 에 포함되어 있다. 
 
 예를 들어 파라미터 간의 관계를 확인하기 위해  `plot_parallel_coordinates(study)` 이라는 명령어를 사용하여 아래와 같은 결과를 얻을 수 있다. (이 예시에서는 lr과 momentum이 파라미터)
 
-![/assets/images/2021-01-25-Optuna를_이용한_hyper_parameter_optimization/Untitled_2.png](/assets/images/2021-01-25-Optuna를_이용한_hyper_parameter_optimization/Untitled_2.png)
+![/assets/images/2021-02-10-optuna를_이용한_hyper_parameter_optimization/untitled_2.png](/assets/images/2021-02-10-optuna를_이용한_hyper_parameter_optimization/untitled_2.png)
 
 다른 방법으로 contour plot을 이용할 수도 있다. 이 결과는 `plot_contour(study)` 를 통해 얻을 수 있다. 
 
-![/assets/images/2021-01-25-Optuna를_이용한_hyper_parameter_optimization/Untitled_3.png](/assets/images/2021-01-25-Optuna를_이용한_hyper_parameter_optimization/Untitled_3.png)
+![/assets/images/2021-02-10-optuna를_이용한_hyper_parameter_optimization/untitled_3.png](/assets/images/2021-02-10-optuna를_이용한_hyper_parameter_optimization/untitled_3.png)
 
 또한 `slice_plot(study)` 을 호출하여 slice plot을 만들 수 있다. 이는 각 파라미터에 대해 개별적인 최적의 부분 공간이 어디에 위치하는지 이해하는 데 도움이 될 수 있다. 
 
-![/assets/images/2021-01-25-Optuna를_이용한_hyper_parameter_optimization/Untitled_4.png](/assets/images/2021-01-25-Optuna를_이용한_hyper_parameter_optimization/Untitled_4.png)
+![/assets/images/2021-02-10-optuna를_이용한_hyper_parameter_optimization/untitled_4.png](/assets/images/2021-02-10-optuna를_이용한_hyper_parameter_optimization/untitled_4.png)
 
 마지막으로 study history를 시각화 하기 위해 `plot_optimization_history(study)` 을 이용할 수도 있다. 
 
-![/assets/images/2021-01-25-Optuna를_이용한_hyper_parameter_optimization/Untitled_5.png](/assets/images/2021-01-25-Optuna를_이용한_hyper_parameter_optimization/Untitled_5.png)
+![/assets/images/2021-02-10-optuna를_이용한_hyper_parameter_optimization/untitled_5.png](/assets/images/2021-02-10-optuna를_이용한_hyper_parameter_optimization/untitled_5.png)
 
 ---
 
-# 5. 요약
+# 요약
 
 1. 실제 학습에 사용되는 함수를 수정한다. (예시에서 `train_mnist` 함수가 이에 해당한다. ) 이 함수는 아래의 조건을 충족해야 한다.  
     - 평가 지표가 될 점수를 `return` 해야 한다. 이 함수 안에서 모델의 파라미터를 정해준다. (`trial.suggest_..` 함수 이용)
@@ -314,7 +315,7 @@ df.head(3)
 
 ---
 
-# 6. 참고
+# 참고
 
 [1] [https://towardsdatascience.com/how-to-make-your-model-awesome-with-optuna-b56d490368af](https://towardsdatascience.com/how-to-make-your-model-awesome-with-optuna-b56d490368af)
 
