@@ -1,13 +1,16 @@
 ---
 title: Minimal-mistakes를 이용하여 github 블로그 만들기
 subtitle: Minimal-mistakes를 이용하여 github 블로그 만들기
-categories: Minimal-mistakes를 이용하여 github 블로그 만들기
+categories: 기타
 date: 2021-02-10 13:59:23 +0900
+toc: 
 tags:
   - minimal mistakes
   - github 블로그
   - jekyll
   - jekyll 블로그 만들기
+toc: true
+toc_sticky: true
 ---
 
 기존에는 티스토리 블로그를 사용하고 있었다. Notion을 이용하면서 마크다운이 얼마나 편한지 새삼 느끼게 되어 github 블로그로 옮길까 말까 고민하다가 너무 마음에 드는 테마를 발견하여 github 블로그로 옮기기로 마음 먹었다. 
