@@ -8,18 +8,18 @@ html {
   /* apply a natural box layout model to all elements */
   box-sizing: border-box;
   background-color: $background-color;
-  font-size: 16px;
+  font-size:120%;
 
   @include breakpoint($medium) {
-    font-size: 18px;
+    font-size: 120%;
   }
 
   @include breakpoint($large) {
-    font-size: 20px;
+    font-size: 120%;
   }
 
   @include breakpoint($x-large) {
-    font-size: 22px;
+    font-size: 120%;
   }
 
   -webkit-text-size-adjust: 100%;
@@ -44,6 +44,22 @@ body { margin: 0; }
 
 /* Display HTML5 elements in IE6-9 and FF3 */
 
+.page__content{
+ font-family: 'Jeju Gothic', sans-serif !important;
+  line-height: 1.5 !important;
+  font-size: 80% !important;
+  color: #111;
+}
+
+.archive{
+  font-size: 100% !important;
+}
+
+
+.archive__item-title.no_toc a{
+text-decoration: none !important;
+}
+
 article,
 aside,
 details,
@@ -56,6 +72,11 @@ main,
 nav,
 section {
   display: block;
+}
+
+.page__inner-wrap.header{
+  padding-bottom:3em;
+
 }
 
 /* Display block in IE6-9 and FF3 */
@@ -113,6 +134,8 @@ sub {
 
 img {
   /* Responsive images (ensure images don't scale beyond their parents) */
+  display: block;
+  margin: 0px auto;
   max-width: 100%; /* part 1: Set a maximum relative to the parent*/
   width: auto\9; /* IE7-8 need help adjusting responsive images*/
   height: auto; /* part 2: Scale the height according to the width, otherwise you get stretching*/
