@@ -9,6 +9,7 @@ tags:
   - label smoothing
 toc: true
 toc_sticky: true
+katex: true
 ---
 
 # 1. Label smoothing이란?
@@ -116,7 +117,7 @@ class LabelSmoothingLoss(nn.Module):
 
 [다중분류를 위한 대표적인 손실함수, torch.nn.CrossEntropyLoss](http://www.gisdeveloper.co.kr/?p=8668)
 
-# Reference
+# 5. Reference
 
 - [https://towardsdatascience.com/what-is-label-smoothing-108debd7ef06](https://towardsdatascience.com/what-is-label-smoothing-108debd7ef06)
 - [https://medium.com/towards-artificial-intelligence/how-to-use-label-smoothing-for-regularization-aa349f7f1dbb](https://medium.com/towards-artificial-intelligence/how-to-use-label-smoothing-for-regularization-aa349f7f1dbb)
