@@ -283,6 +283,7 @@ defaults:
       toc_ads: true
       toc_sticky: true
       show_date: true
+      mathjax: true
   # _pages
   - scope:
       path: ""

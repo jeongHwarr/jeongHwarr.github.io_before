@@ -9,7 +9,6 @@ tags:
   - label smoothing
 toc: true
 toc_sticky: true
-katex: true
 ---
 
 # 1. Label smoothing이란?
@@ -18,9 +17,8 @@ Hard target을 soft target으로 바꾸는 것으로 라벨 스무딩을 이용�
 
 간단히 말하자면, 아래의 식으로 hard target을 soft target으로 바꾸어 모델의 over confidence 문제를 해결할 수 있기에 모델의 일반화 성능이 향상됩니다. 라벨 스무딩이 잘 동작하는 이유에 대한 자세한 설명이 궁금하시다면 해당 [링크](https://ratsgo.github.io/insight-notes/docs/interpretable/smoothing)에서 확인할 수 있습니다.
 
-$$\tag{1} y(k)' = y(k)(1-\alpha)+\alpha/K $$
+$$\tag{1} y(k)' = y(k)(1-\alpha)+\alpha/K\\\scriptsize{\text{($k$: 현재 클래스의 index, $y(k)$: ground truth, $K$: 총 클래스 개수, $\alpha$: 최적화 해야 할 하이퍼파라미터)}} $$
 
-($k$: 현재 클래스의 index, $y(k)$: ground truth, $K$: 총 클래스 개수, $\alpha$: 최적화 해야 할 하이퍼파라미터)
 
 $\alpha$가 0.1일 때 
 Hard target: [0,1,0,0]
@@ -32,9 +30,8 @@ Label smoothing을 적용한 라벨에 대해 cross entropy를 적용하면 다�
 
 $p(k)$와 $y(k)$라는 두 확률 분포가 있을 때 두 확률 분포 사이의 cross entrophy는 아래와 같습니다. 여기서 $p(k)$는 모델의 예측 값이고, $y(k)$는 ground truth라고 가정합니다. 
 
-$$\tag{2} H(y,p) =-\sum_{k=1}^K\log (p(k))y(k)$$
+$$\tag{2} H(y,p) =-\sum_{k=1}^K\log (p(k))y(k)\\\scriptsize{\text{($p(k)$: predicted, $y(k)$: ground truth)}}$$
 
-($p(k)$: predicted, $y(k)$: ground truth)
 
 $H(y',p)$을 구하기 위해 위의 식에서 $y(k)$ 자리에 라벨 스무딩을 적용한 $y(k)'$를 대입합니다.  이 때, $y(k)'$를 계산하는 식 $(1)$의 마지막 항 $\alpha/K$는  uniform distribution에 $\alpha$가 곱해진 것으로 여길 수 있습니다. 따라서 $y(k)'$는 다음과 같이 쓸 수 있습니다.
 
@@ -42,11 +39,11 @@ $$\tag {3} y(k)' = y(k)(1-\alpha)+\alpha u(k)$$
 
 위 식 $(3)$을 대입하여 $H(y',p)$를 구하면 아래의 식으로 표현할 수 있습니다.
 
-$$\tag{4} H(p,y') = -\sum_{k=1}^K\log (p(k))\{(1-\alpha)y(k)+\alpha(u(k))\} \newline= (1-\alpha)H(q,p)+\alpha H(u,p)$$
+$$\tag{4} H(p,y') = -\sum_{k=1}^K\log (p(k))\{(1-\alpha)y(k)+\alpha(u(k))\} \\(1-\alpha)H(q,p)+\alpha H(u,p)$$
 
 # 3. Tensorflow
 
-Tensorflow에서는 `[BinaryCrossentropy](https://www.tensorflow.org/api_docs/python/tf/keras/losses/BinaryCrossentropy)`와 `[CategoricalCrossentropy](https://www.tensorflow.org/api_docs/python/tf/keras/losses/BinaryCrossentropy)`함수에 이미 구현되어 있습니다.  간단하게 `label_smoothing`에 값을 넣으면 됩니다. 
+Tensorflow에서는 [BinaryCrossentropy](https://www.tensorflow.org/api_docs/python/tf/keras/losses/BinaryCrossentropy)와 [CategoricalCrossentropy](https://www.tensorflow.org/api_docs/python/tf/keras/losses/BinaryCrossentropy)함수에 이미 구현되어 있습니다.  간단하게 `label_smoothing`에 값을 넣으면 됩니다. 
 
 ```python
 tf.keras.losses.BinaryCrossentropy(
