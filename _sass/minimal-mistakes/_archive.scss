@@ -3,6 +3,7 @@
    ========================================================================== */
 
 .archive {
+  font-size: 100% !important;
   margin-top: 1em;
   margin-bottom: 2em;
 
@@ -44,7 +45,7 @@
 }
 
 .archive__item-title {
-  margin-bottom: 0.25em;
+  margin-bottom: 0.4em;
   font-family: $sans-serif-narrow;
   line-height: initial;
   overflow: hidden;
