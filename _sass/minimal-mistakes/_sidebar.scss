@@ -160,7 +160,7 @@
 
 .author__name {
   margin: 0;
-
+  font-size: 90% !important;
   @include breakpoint($large) {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -168,7 +168,7 @@
 }
 .sidebar .author__name {
   font-family: $sans-serif;
-  font-size: $type-size-5;
+  font-size: 90% !important;
 }
 
 .author__bio {

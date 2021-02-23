@@ -8,18 +8,18 @@ html {
   /* apply a natural box layout model to all elements */
   box-sizing: border-box;
   background-color: $background-color;
-  font-size:120%;
+  font-size:115%;
 
   @include breakpoint($medium) {
-    font-size: 120%;
+    font-size: 115%;
   }
 
   @include breakpoint($large) {
-    font-size: 120%;
+    font-size: 115%;
   }
 
   @include breakpoint($x-large) {
-    font-size: 120%;
+    font-size: 115%;
   }
 
   -webkit-text-size-adjust: 100%;
@@ -47,7 +47,7 @@ body { margin: 0; }
 .page__content{
  font-family: 'Jeju Gothic', sans-serif !important;
   line-height: 2 !important;
-  font-size: 80% !important;
+  font-size: 85% !important;
   color: #111;
 }
 
