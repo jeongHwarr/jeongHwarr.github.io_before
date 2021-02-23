@@ -16,11 +16,11 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "ko"
-title                    : "JeongHwarr의 작은 다락방"
+title                    : "Hwarr의 작은 다락방"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "JeongHwarr"
-description              : "JeongHwarr의 작은 다락방"
+description              : "Hwarr의 작은 다락방"
 url                      : "https://jeonghwarr.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
