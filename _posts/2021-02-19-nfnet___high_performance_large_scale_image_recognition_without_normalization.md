@@ -37,7 +37,7 @@ EfficientNet-B7보다 최대 8.7배 더 빠른 학습 속도로 동등한 성능
 
 # 2. NFNets - Normalizer Free Networks란?
 
-![/assets/images/2021-02-19-nfnet___high_performance_large_scale_image_recognition_without_normalization/untitled.png](/assets/images/2021-02-19-nfnet___high_performance_large_scale_image_recognition_without_normalization/untitled.png)
+![/assets/images/2021-02-19-nfnet_high_performance_large_scale_image_recognition_without_normalization/untitled.png](/assets/images/2021-02-19-nfnet_high_performance_large_scale_image_recognition_without_normalization/untitled.png)
 위 그림은 ImageNet에 대한 NFNets에 성능입니다. 보시다시피 기존 SOTA 모델이었던 EfficientNet보다 더 좋은 성능을 보인 것을 알 수 있습니다.
 사실 그동안 배치 정규화를 제거하려는 수많은 시도가 있었으나 SOTA 성능에 미치지는 못했습니다.
 NFNets은 배치 정규화를 제거하고 성공적으로 SOTA를 달성했습니다.
@@ -69,7 +69,7 @@ $$G^l_i\rightarrow
 \\$$
 $\lambda$는 하이퍼파라미터로 clipping을 하는 경계값(threshold)입니다.  ${\Vert{W^l_i}\Vert^\star}$은 $\max({\Vert{W^l_i}\Vert^\star},\epsilon)$을 의미합니다. $\epsilon$은 0.001의 값으로 이렇게 처리 해주는 이유는 0으로 초기화 된 파라미터의 기울기가 항상 0으로 클리핑 되는 것을 막기 위해서입니다.
 
-![/assets/images/2021-02-19-nfnet___high_performance_large_scale_image_recognition_without_normalization/untitled_1.png](/assets/images/2021-02-19-nfnet___high_performance_large_scale_image_recognition_without_normalization/untitled_1.png)AGC를 적용한 결과
+![/assets/images/2021-02-19-nfnet_high_performance_large_scale_image_recognition_without_normalization/untitled_1.png](/assets/images/2021-02-19-nfnet_high_performance_large_scale_image_recognition_without_normalization/untitled_1.png)AGC를 적용한 결과
 
 
 주황색 선과 초록색 선을 비교해보면, AGC를 적용한 결과 배치 정규화가 없이도 큰 batch size에 대해서 성공적으로 학습이 되는 것을 알 수 있습니다.
