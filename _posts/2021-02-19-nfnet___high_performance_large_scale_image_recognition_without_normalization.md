@@ -19,7 +19,7 @@ EfficientNet-B7보다 최대 8.7배 더 빠른 학습 속도로 동등한 성능
 
 이 논문은 먼저 기존의 모델들에서 너무 당연하게 쓰이고 있었던 배치 정규화에 대한 의문으로부터 시작됩니다.
 
-# 1.배치 정규화 (Batch Normalization)
+# 1. 배치 정규화 (Batch Normalization)
 배치 정규화는 좋은 결과를 보여주며 수많은 SOTA 모델에서 많이 사용된 기법입니다. 하지만 저자들은 너무 당연하게 쓰이는 배치 정규화에 대한 의문을 가지고 시작합니다.
 사실 배치 정규화는 무조건 좋은 것이 아니라 장단점을 가지고 있습니다. 
 
@@ -83,7 +83,7 @@ $\lambda$는 하이퍼파라미터로 clipping을 하는 경계값(threshold)입
 
   
 
-## 3-1. AGC 코드 (Pytorch)
+## AGC 코드 (Pytorch)
 
 ```python
 #출처: https://github.com/vballoli/nfnets-pytorch
