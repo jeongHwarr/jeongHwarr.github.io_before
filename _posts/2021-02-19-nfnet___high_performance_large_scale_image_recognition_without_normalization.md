@@ -11,6 +11,8 @@ tags:
   - Normalization Free Nets
 toc: true
 toc_sticky: true
+sitemap:
+  changefreq: daily
 ---
 
 안녕하세요. 오늘은 정말 따끈따끈한 논문인 [High-Performance Large-Scale Image Recognition Without Normalization](https://arxiv.org/abs/2102.06171)에 대한 리뷰입니다. Deepmind에서 새롭게 발표한 일주일도 안된 따끈따끈한 논문입니다. 그동안 ImageNet데이터에서 SOTA 성능을 달성한 논문은 대부분 EfficientNet을 사용하였습니다.

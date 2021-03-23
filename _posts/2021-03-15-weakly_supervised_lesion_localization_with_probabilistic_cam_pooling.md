@@ -14,6 +14,8 @@ tags:
   - Pooling
 toc: true
 toc_sticky: true
+sitemap:
+  changefreq: daily
 ---
 
 [Weakly Supervised Lesion Localization With Probabilistic-CAM Pooling](https://arxiv.org/abs/2005.14480)
