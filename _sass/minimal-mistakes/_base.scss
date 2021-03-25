@@ -156,6 +156,7 @@ kbd,
 samp,
 pre {
   font-family: $monospace;
+  font-size:105%
 }
 
 pre {
@@ -177,7 +178,7 @@ td > code {
   */
   background: rgba(135, 131, 120, 0.15);
   border-radius: 3px;
-  font-size: 85%;
+  font-size: 100%;
   tab-size: 2;
   color: #eb5757;
   padding-top: 0.1rem;
