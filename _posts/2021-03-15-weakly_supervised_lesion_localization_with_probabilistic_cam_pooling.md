@@ -1,7 +1,7 @@
 ---
 title: Weakly Supervised Lesion Localization With Probabilistic-CAM Pooling
 subtitle: Probabilistic-CAM(PCAM)
-categories: Tips
+categories: Review
 date: 2021-03-15 22:13:32 +0900
 tags:
   - XAI

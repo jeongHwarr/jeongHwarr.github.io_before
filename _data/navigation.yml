@@ -14,9 +14,11 @@ main:
   #   url: /sitemap/
 
 sidebar-contents:
- - title: "머신러닝"
+ - title: "머신러닝&딥러닝"
    children:
-     - title: "Tips"
-     - url: /categories/#tips
+    - title: "Review"
+      url: /categories/#review
+    - title: "Tips"
+      url: /categories/#tips
  - title: "기타"
    url: /categories/#기타
