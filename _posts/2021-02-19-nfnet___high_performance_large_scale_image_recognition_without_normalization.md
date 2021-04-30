@@ -1,5 +1,5 @@
 ---
-title: NFnet - High Performance Large Scale Image Recognition Without Normalization
+title: "[논문리뷰] NFnet-High Performance Large Scale Image Recognition Without Normalization"
 subtitle: NFnet
 categories: Review
 date: 2021-02-19 00:02:16 +0900
@@ -9,6 +9,8 @@ tags:
   - imagent
   - imagent SOTA
   - Normalization Free Nets
+  - NFnet 설명
+  - NFnet 리뷰
 toc: true
 toc_sticky: true
 sitemap:

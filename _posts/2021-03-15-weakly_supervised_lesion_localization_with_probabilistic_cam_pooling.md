@@ -1,5 +1,5 @@
 ---
-title: Weakly Supervised Lesion Localization With Probabilistic-CAM Pooling
+title: "[논문리뷰] Weakly Supervised Lesion Localization With Probabilistic-CAM Pooling"
 subtitle: Probabilistic-CAM(PCAM)
 categories: Review
 date: 2021-03-15 22:13:32 +0900
@@ -12,6 +12,7 @@ tags:
   - PCAM
   - CAM
   - Pooling
+  - PCAM 설명
 toc: true
 toc_sticky: true
 sitemap:
@@ -45,9 +46,9 @@ Backbone (논문에서는 ResNet-34) 이 되는 마지막 convolution layer[1]�
 
 **한편, 이 논문에서 특이점은 heatmap을 생성하는 logit을 학습 중에 이용하여 localization을 가이드하고 binary classification하는 데에 사용한다는 것이다.** 이 과정은 아래의 식을 이용하여 pooled feature embedding $x$를 만드는 것으로 시작된다. 
 
-$x = \varSigma_{i,j}^{H,W}w_{i,j}X_{i,j}$
+$$x = \varSigma_{i,j}^{H,W}w_{i,j}X_{i,j}$$
 
-$w_{i,j} = \cfrac{sigmoid(w^TX_{i,j}+b)}{\varSigma_{i,j}^{H,W}sigmoid(w^TX_{i,j}+b)}$
+$$w_{i,j} = \cfrac{\text{sigmoid}(w^TX_{i,j}+b)}{\varSigma_{i,j}^{H,W}\text{sigmoid}(w^TX_{i,j}+b)}$$
 
 $w_{i,j}$는 $X_{i,j}$의 attention weight를 의미한다. 이것은 fc layer를 지나 얻어진 logit을 sigmoid하여 값을 bound한 다음에 노멀라이징한 값이다.  pooled feature map $x$는 이 attention weight와 backbone의 마지막 레이어에서 나온 $X_{i,j}$를 곱하여 height와 width 축에 대해 모두 더한 값이 된다. 이 pooled feature map $x$가 다시 fc layer를 지나 최종적으로 질병에 대한 확률값이 나온다. 
 

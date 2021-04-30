@@ -1,5 +1,5 @@
 ---
-title: Optuna를 이용한 hyper parameter optimization
+title: "[Tips] Optuna를 이용한 hyper parameter optimization"
 subtitle: Optuna를 이용한 hyper parameter optimization
 categories: Tips
 date: 2021-02-10 16:45:41 +0900

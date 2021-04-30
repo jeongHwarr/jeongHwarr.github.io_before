@@ -1,5 +1,5 @@
 ---
-title: Minimal-mistakes를 이용하여 github 블로그 만들기
+title: "[기타] Minimal-mistakes를 이용하여 github 블로그 만들기"
 subtitle: Minimal-mistakes를 이용하여 github 블로그 만들기
 categories: 기타
 date: 2021-02-10 13:59:23 +0900
