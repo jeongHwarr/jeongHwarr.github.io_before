@@ -37,7 +37,7 @@ $$\tag {3} y(k)' = y(k)(1-\alpha)+\alpha u(k)$$
 
 위 식 $(3)$을 대입하여 $H(y',p)$를 구하면 아래의 식으로 표현할 수 있습니다.
 
-$$\tag{4} H(y',p) = -\sum_{k=1}^K\log (p(k))\{(1-\alpha)y(k)+\alpha(u(k))\}\newline = (1-\alpha)H(q,p)+\alpha H(u,p)$$
+$$\tag{4} H(y',p) = -\sum_{k=1}^K\log (p(k))\{(1-\alpha)y(k)+\alpha(u(k))\}\\ = (1-\alpha)H(q,p)+\alpha H(u,p)$$
 
 # 3. Tensorflow
 
