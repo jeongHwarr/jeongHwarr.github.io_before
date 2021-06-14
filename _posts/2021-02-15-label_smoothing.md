@@ -25,17 +25,19 @@ $$\tag{1} y(k)' = y(k)(1-\alpha)+\alpha/K\\\scriptsize{\text{($k$: 현재 클래
 
 # 2. Cross entropy에서의 적용
 
-Label smoothing을 적용한 라벨에 대해 cross entropy를 적용하면 다음과 같이 됩니다. $p(k)$와 $y(k)$라는 두 확률 분포가 있을 때 두 확률 분포 사이의 cross entrophy는 아래와 같습니다. 여기서 $p(k)$는 모델의 예측 값이고, $y(k)$는 ground truth라고 가정합니다. 
+라벨스무딩을 cross entropy에 적용하는 방법은 단순합니다. 그저 일반적인 cross entropy식에서 truth label인 $y(k)$를 (1)의 식으로 구한 $y'(k)$로 바꾸면 됩니다. 
+
+Label smoothing을 적용한 truty 라벨에 대해 cross entropy를 적용하면 다음과 같이 됩니다. $p(k)$와 $y(k)$라는 두 확률 분포가 있을 때 두 확률 분포 사이의 cross entrophy는 아래와 같습니다. 여기서 $p(k)$는 모델의 예측 값이고, $y(k)$는 ground truth라고 가정합니다. 
 
 $$\tag{2} H(y,p) =-\sum_{k=1}^K\log (p(k))y(k)\\\scriptsize{\text{($p(k)$: predicted, $y(k)$: ground truth)}}$$
 
-$H(y',p)$을 구하기 위해 위의 식에서 $y(k)$ 자리에 라벨 스무딩을 적용한 $y(k)'$를 대입합니다. 이 때, $y(k)'$를 계산하는 식 $(1)$의 마지막 항 $\alpha/K$는  uniform distribution에 $\alpha$가 곱해진 것으로 여길 수 있습니다. 따라서 $y(k)'$는 다음과 같이 쓸 수 있습니다.
+$H(y',p)$을 구하기 위해 위의 식에서 $y(k)$ 자리에 라벨 스무딩을 적용한 $y(k)'$를 대입합니다. 이 때, $y(k)'$를 계산하는 식 $(1)$의 마지막 항 $\alpha/K$는  uniform distribution에 $\alpha$가 곱해진 것으로 여길 수 있습니다. 따라서 $y(k)'$는 다음과 같이 쓸 수 있습니다. 여기서 $u(k)$는 uniform distribution을 의미합니다.
 
 $$\tag {3} y(k)' = y(k)(1-\alpha)+\alpha u(k)$$
 
 위 식 $(3)$을 대입하여 $H(y',p)$를 구하면 아래의 식으로 표현할 수 있습니다.
 
-$$\tag{4} H(p,y') = -\sum_{k=1}^K\log (p(k))\{(1-\alpha)y(k)+\alpha(u(k))\} \\(1-\alpha)H(q,p)+\alpha H(u,p)$$
+$$\tag{4} H(y',p) = -\sum_{k=1}^K\log (p(k))\{(1-\alpha)y(k)+\alpha(u(k))\}\newline = (1-\alpha)H(q,p)+\alpha H(u,p)$$
 
 # 3. Tensorflow
 
