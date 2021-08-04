@@ -1,5 +1,5 @@
 ---
-title: "[Review] NFnet-High Performance Large Scale Image Recognition Without Normalization"
+title: "[논문리뷰] NFnet-High Performance Large Scale Image Recognition Without Normalization"
 subtitle: NFnet
 categories: Review
 date: 2021-02-19 00:02:16 +0900
