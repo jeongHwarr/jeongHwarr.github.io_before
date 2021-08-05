@@ -155,8 +155,9 @@ code,
 kbd,
 samp,
 pre {
+  border-radius: $border-radius;
   font-family: $monospace;
-  font-size:105%
+  font-size:105%;
 }
 
 pre {
@@ -178,7 +179,7 @@ td > code {
   */
   background: rgba(135, 131, 120, 0.15);
   border-radius: 3px;
-  font-size: 80%;
+  font-size: 90%;
   tab-size: 2;
   color: #eb5757;
   padding-top: 0.1rem;
@@ -226,7 +227,8 @@ figure {
   -webkit-box-align: start;
   align-items: flex-start;
   flex-wrap: wrap;
-  margin: 2em 0;
+  margin: 0px auto;
+  width: 80%;
 
   img,
   iframe,
@@ -235,7 +237,6 @@ figure {
   }
 
   img {
-    width: 100%;
     border-radius: $border-radius;
     -webkit-transition: $global-transition;
     transition: $global-transition;
@@ -279,6 +280,8 @@ figcaption {
   color: $muted-text-color;
   font-family: $caption-font-family;
   font-size: $type-size-6;
+  width: 90%;
+  margin: 0px auto;
 
   a {
     -webkit-transition: $global-transition;
@@ -369,12 +372,12 @@ input[type="submit"],
   transition: $global-transition;
 }
 
-.mjx-chtml{
-  font-size: 120% !important;
-
+.MathJax_CHTML{
+  font-size: 100% !important;
 }
-.MJXc-display {
-    margin: 2.5em 0 !important;
+.mjx-chtml{
+  .MathJax_CHTML{
+    font-size: 120% !important;
     @media(max-width:768px){
       .wide {display:none;}
       .mobilefont {font-size:0.5em;}
@@ -382,5 +385,9 @@ input[type="submit"],
     @media(min-width:768px){
       .tight {display:none;}
     }
+  }
+}
 
+.MJXc-display {
+  margin: 2.5em 0 !important;
 }
