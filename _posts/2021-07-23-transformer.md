@@ -1,5 +1,5 @@
 ---
-title: "[논문리뷰] Transformer-Attention All You Need Is"
+title: "[논문리뷰] Transformer - Attention Is All You Need"
 subtitle: 
 categories: Review
 date: 2021-07-23 19:40:47 +0900
@@ -14,7 +14,7 @@ toc: true
 toc_sticky: true
 ---
 
-이 포스트는 [Attention All You Need Is](https://arxiv.org/pdf/1706.03762.pdf)로 유명한 transformer에 대한 포스트입니다. NLP로 처음 transformer를 접했었는데 최근에는 비전 분야에서도 SOTA 기술로 적용되는 등 놀라운 성과를 보여 이번 기회에 transformer에 대해 정리해야겠다는 생각이 들어 본 글을 작성했습니다. 
+이 포스트는 [Attention Is All You Need](https://arxiv.org/pdf/1706.03762.pdf)로 유명한 transformer에 대한 포스트입니다. NLP로 처음 transformer를 접했었는데 최근에는 비전 분야에서도 SOTA 기술로 적용되는 등 놀라운 성과를 보여 이번 기회에 transformer에 대해 정리해야겠다는 생각이 들어 본 글을 작성했습니다. 
 
 Transformer는 나온지 꽤 됐을 뿐더러, 많은 분야에서 사용되는 기술인만큼 여기저기서 좋은 자료를 찾을 수 있습니다. 저도 상당 수를 참고 자료에 넣어놓은 링크에서 참고했다는 점 먼저 말씀 드립니다. 
 
