@@ -11,17 +11,16 @@ tags:
   - ImageNet
   - Generative AI
   - Data shortage problem
+toc: true
+toc_sticky: true
 ---
-
 
 이번에 리뷰할 논문은 구글 리서치 그룹에서 TMLR(Transactions on Machine Learning Research) 2023에 제출한 논문인 [Synthetic Data from Diffusion Models Improves ImageNet Classification](https://arxiv.org/abs/2304.08466)입니다. 
 
 생성 모델이 놀라운 속도로 발전하고 있는데요! 해당 논문에서는 생성 모델의 수준이 얼만큼 왔는지, 복잡한 이미지 데이터인 ImageNet 데이터에 대해서도 충분한 퀄리티의 데이터를 생성할 수 있는 정도가 되었는지, 그래서 이 생성된 데이터를 augment된 데이터로 사용할 수 있는 정도까지 왔는지에 대한 실험과 답을 제시합니다. 이 글의 목차는 논문 내용과 동일하게 구성하였습니다. 
 
 
-<aside>
-💡 핵심 요약 
-
+# 💡 핵심 요약 
 - Classification task에서 생성 모델을 데이터 augmentation으로 사용해 분류 성능을 개선 시킴 
 
 - Large-scale text-to-image diffusion 모델을 fine-tuning하여 FID와 Inception Score, Classification Accuracy Score에서 SOTA를 달성
@@ -30,7 +29,6 @@ tags:
 
 - Diffusion으로 만든 합성 데이터를 학습에 사용하였을 경우 ResNet 및 Vision Transformer의 분류 성능이 크게 향상 됨
 
-</aside>
 
 본 논문에서는 기술적으로 엄청 새로운 내용은 없는데요! 다만 보통 사전학습된 text-to-image diffusion 모델을 사용하던 기존 방법들과는 달리 Imagen을 ImageNet에 대해 파인튜닝 했다는 것이 새롭습니다. 
 
@@ -41,7 +39,7 @@ Diffusion 모델의 등장으로 생성 기술이 크게 발전되었습니다. 
     - ImageNet에 대해 fine-tuning된 Imagen이 FID, Inception Score, CAS 성능에 대해 SOTA 성능을 달성 하였다.
     - 합성 데이터와 실제 데이터를 결합하여 사용하고, 합성 데이터의 양이 많고, 훈련 시간이 길수록 생성 데이터로 훈련된 모델의 성능이 더욱 향상되었다.
         
-    {% include figure image_path="/assets/images/2023-11-06-synthetic_data_from_diffusion_models_improves_imagenet_classification/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-10-02_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_10.34.02.png" caption="위 그림: 합성 데이터로만 학습된 모델 분류 성능과 진짜 데이터로 학습된 모델의 분류 성능 비교
+    {% include figure image_path="/assets/images/2023-11-06-synthetic_data_from_diffusion_models_improves_imagenet_classification/1.png" caption="위 그림: 합성 데이터로만 학습된 모델 분류 성능과 진짜 데이터로 학습된 모델의 분류 성능 비교
     아래 그림: 합성 및 진짜 데이터를 사용하였을 때의 분류 성능과 진짜 데이터로 학습된 모델의 분류 성능 비교" %}
 
 위의 그림에서 볼 수 있듯이 합성 데이터로만 학습한 모델의 정확도와 실제 데이터로 학습한 모델의 정확도를 비교했을 때, 다른 모델들에 비해 본 논문에서 제안한 모델이 훨씬 성능 차이가 적다는 것을 알 수 있습니다. 또한, 아래 그림을 보면, 실제 데이터와 생성된 데이터를 더해서 학습했을 경우에는 ResNet 기반 모델과 Transformer 기반 모델들에서 모두 실제 데이터를 사용했을 때보다 성능 향상이 있었습니다. 
@@ -70,7 +68,6 @@ CAS는 FID와 Inception Score와 마찬가지로 생성 모델이 만들어낸 �
 
 먼저 저자들은 text-to-image diffusion 모델로는 Imagen을 사용하였습니다. Text-to-image 모델을 어떻게 ImageNet 클래스와 alignment 할 지에 대한 고민이 필요했다고 합니다. 처음에는 CLIP에서 사용한 방법과 유사하게 짧은 텍스트를 ImageNet 클래스의 텍스트 프롬프트로 사용했다고 하였는데 이 경우에 성능이 좋지 않았다고 합니다. 이는 Imagen에서 high guidance weight를 사용하여 샘플의 다양성이 저하 되면서 생기는 현상일 수 있다고 합니다. 따라서, 저자들은 프롬프트를 한 두단어 클래스 이름으로 수정하고, 모델의 weight와 sampling parameter를 fine-tuning 했다고 합니다.  
 
-    
 ![스크린샷 2023-10-04 오전 12.51.04.png](/assets/images/2023-11-06-synthetic_data_from_diffusion_models_improves_imagenet_classification/%25e1%2584%2589%25e1%2585%25b3%25e1%2584%258f%25e1%2585%25b3%25e1%2584%2585%25e1%2585%25b5%25e1%2586%25ab%25e1%2584%2589%25e1%2585%25a3%25e1%2586%25ba_2023-10-04_%25e1%2584%258b%25e1%2585%25a9%25e1%2584%258c%25e1%2585%25a5%25e1%2586%25ab_12.51.04.png)
     
 왼쪽 그림이 fine-tuning이 적용된 Imagen이 만들어낸 이미지고, 오른쪽이 fine-tuning이 적용되지 않은 Imagen입니다. 아래에서 두 번째 클래스인 Schipperke를 보면, 이것은 스키퍼키라는 개 품종을 의미하는데 fine-tuning이 적용되지 않은 Imagen의 경우는 꽃과 같은 전혀 엉뚱한 이미지를 만들고 있는 것을 볼 수 있습니다. 
@@ -111,7 +108,6 @@ CAS는 FID와 Inception Score와 마찬가지로 생성 모델이 만들어낸 �
 <br>
 
 64x64 기반 모델의 샘플링 parameter 설정법에 대해 설명하겠습니다. 해당 모델의 샘플링 이미지 샘플링의 전반적인 특징과 다양성의 영향을 주게 됩니다. 1차 sweep으로 DDPM 샘플러를 이용하여 FID-50K에 대해 가장 최적의 하이퍼파라미터를 찾습니다. Sweep의 사용한 각 하이퍼파라미터의 범위는 아래와 같습니다. 
-
 
 - Guidance weight: [1.0, 1.25, 1.5, 1.75, 2.0, 5.0]
 - Log-variance: [0.0, 0.2, 0.3, 0.4, 1.0]
