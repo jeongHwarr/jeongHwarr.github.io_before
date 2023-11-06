@@ -200,3 +200,6 @@ Table 2에서도 마찬가지로 본 논문 모델이 다른 베이스 모델보
 --- 
 
 이렇게 Synthetic Data from Diffusion Models Improves ImageNet Classification 논문의 리뷰를 마치겠습니다. 개인적으로 느낀 점은 실제 산업에서는 data shortage나 class imbalance 문제가 대부분 발생하는데 본 논문이 그 해결법 중 하나가 될 수 있을 것 같다는 생각이 들었습니다. 다만 Frozen Text Encoder는 추가적으로 파인튜닝이 되지 않기 때문에 특정 산업에서만 쓰이는 특정 텍스트가 들어왔을 때는 잘 동작할 수 있을까 하는 의문이 들었습니다. 또한 합성하고자 하는 데이터셋에 맞게 파인튜닝을 해야하는 점이 꽤나 불편할 것 같아서 파인튜닝이 모델 성능에 얼마나 큰 의미를 갖는지, 파인튜닝을 하지 않았을 때의 CAS 성능도 논문에 있었으면 좋았을 것 같다는 개인적인 생각이 들었습니다. (물론 Figure 2를 보고 어느 정도 결과를 유추해볼 순 있지만요!)  
+
+
+이 페이지는 가짜연구소 [Text-to-Image Generation (feat. Diffusion)](https://pseudo-lab.github.io/text-to-image-generation-feat-diffusion/intro.html) 페이지에서도 볼 수 있습니다. [Github 저장소](https://github.com/Pseudo-Lab/text-to-image-generation-feat-diffusion)에도 많은 관심 부탁드려요! 
