@@ -151,13 +151,17 @@ button:focus {
 /* code */
 
 tt,
-code,
 kbd,
 samp,
 pre {
   border-radius: $border-radius;
   font-family: $monospace;
   font-size:105%;
+}
+
+code{
+  border-radius: $border-radius;
+  font-family: $monospace;
 }
 
 pre {
