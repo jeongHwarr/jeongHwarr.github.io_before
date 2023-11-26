@@ -88,8 +88,7 @@ toc_sticky: true
     - Decoder Network $D$: 이미지 임베딩 $y_e$로부터 저해상도 64X64 RGB 이미지 $\hat{y}_l$를 생성하는 네트워크
     - Super-resolution network $SR_l$, $SR_h$: D에서 생성된 이미지 64X64 저해상도 이미지 $\hat{y}_l$를 256X256, 768X768 픽셀로 증가시켜 최종 이미지 $\hat{y}$를 만드는 네트워크
         
-    ![text $x$가 prior $P$를 통해 image embedding 변환된다. fps: desired frame rate.](/assets/images/2023-11-26-make_a_video_text_to_video_generation_without_text_video_data/make_a_video_architecture.png)
-         
+    {% include figure image_path="/assets/images/2023-11-26-make_a_video_text_to_video_generation_without_text_video_data/make_a_video_architecture.png" caption="text $x$가 prior $P$를 통해 image embedding 변환된다. fps: desired frame rate." %}
 
 ## 3.2. Spatiotemporal Layers
 
