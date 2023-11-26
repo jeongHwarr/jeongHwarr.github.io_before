@@ -23,7 +23,7 @@ function sleep(ms) {
   
     var pre = codeChunk.item(i);
     var btn = document.createElement("button");
-    // Prepare button
+    // Prepare buåtton
     btn.innerHTML = "<i class='far fa-copy'></i>"; // Icon to be displayed on the button
   
     // Inline styling - may be a new css class, to be added in the next section
@@ -55,6 +55,7 @@ function sleep(ms) {
   // Messages and make the button blink
   clipboard.on("success", function (e) {
     e.clearSelection();
+    e.trigger.innerHTML = "<i class='fas fa-check'></i>";
     buttonBlink(e.trigger, "btn--success");
     console.info("Action:", e.action);
     console.info("Text:", e.text);
