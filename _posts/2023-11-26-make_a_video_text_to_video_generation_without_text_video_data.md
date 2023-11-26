@@ -1,5 +1,5 @@
 ---
-title: "Make-A-Video: Text-to-Video Generation without Text-Video Data"
+title: "[논문리뷰] Make-A-Video: Text-to-Video Generation without Text-Video Data"
 subtitle: Make-A-Video
 categories: Review
 date: 2023-11-26 15:53:42 +0900
@@ -9,32 +9,30 @@ tags:
   - imagen
   - t2v
   - video generation
+toc: true
+toc_sticky: true
 ---
 
-[](https://arxiv.org/abs/2209.14792)
+이번에 리뷰할 논문은 메타에서 공개한 [Make-A-Video](https://arxiv.org/abs/2209.14792)라는 논문입니다. 논문에서 구체적으로 설명되지 않은 부분은 Official하게 공개된 코드가 없어서 [해당 코드 레파지토리](https://github.com/lucidrains/make-a-video-pytorch)를 통해 이해했습니다. (official 코드는 공개된 것이 없고 해당 레파지토리는 다른 분께서 구현하신 코드입니다.)
 
-[https://github.com/lucidrains/make-a-video-pytorch](https://github.com/lucidrains/make-a-video-pytorch)
-
-<aside>
-💡 - Text-to-Image(T2I)를 이용하여 Text-to-Video(T2V)를 수행함
+# 💡 핵심 요약 
+- Text-to-Image(T2I)를 이용하여 Text-to-Video(T2V)를 수행함
 
 - Make-a-Video의 장점
-1. T2V 모델의 학습을 가속화 하였음 
-2. Text-video 데이터가 필요하지 않음
-3. 이미지 생성 모델의 방대하다는 특성을 그대로 유지함 
+  1. T2V 모델의 학습을 가속화 하였음 
+  2. Text-video 데이터가 필요하지 않음
+  3. 이미지 생성 모델의 방대하다는 특성을 그대로 유지함 
 
 - 방법론
-1. Full temporal U-net과 attention tensor를 분해하여 공간(space)과 시간(time)으로 근사화 함
-2. 다양한 어플리케이션에 적용하기 위한 spatial temporal pipeline을 설계함
+  1. Full temporal U-net과 attention tensor를 분해하여 공간(space)과 시간(time)으로 근사화 함
+  2. 다양한 어플리케이션에 적용하기 위한 spatial temporal pipeline을 설계함
 
 - 관련 모듈
-1. Pseudo-3D convolutional layer
-2. Pseudo-3D attention layer
-3. Frame interpolation network 
+  1. Pseudo-3D convolutional layer
+  2. Pseudo-3D attention layer
+  3. Frame interpolation network 
 
 - 결과: text-to-video 생성 태스크에서 SOTA 달성
-
-</aside>
 
 # 1. **Introduction**
 
@@ -90,12 +88,8 @@ tags:
     - Decoder Network $D$: 이미지 임베딩 $y_e$로부터 저해상도 64X64 RGB 이미지 $\hat{y}_l$를 생성하는 네트워크
     - Super-resolution network $SR_l$, $SR_h$: D에서 생성된 이미지 64X64 저해상도 이미지 $\hat{y}_l$를 256X256, 768X768 픽셀로 증가시켜 최종 이미지 $\hat{y}$를 만드는 네트워크
         
-        ![text $x$가 prior $P$를 통해 image embedding 변환된다. 
-        fps: desired frame rate ](Make-A-Video%20Text-to-Video%20Generation%20without%20Text%20b637408238284813ad6c570451dbe2db/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-10-31_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_1.14.45.png)
-        
-        text $x$가 prior $P$를 통해 image embedding 변환된다. 
-        fps: desired frame rate 
-        
+        {% include figure image_path="/assets/images/2023-11-26-make_a_video_text_to_video_generation_without_text_video_data/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-10-31_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_1.14.45.png" caption="text $x$가 prior $P$를 통해 image embedding 변환된다. fps: desired frame rate." %}
+         
 
 ## 3.2. Spatiotemporal Layers
 
@@ -138,7 +132,7 @@ tags:
 
 ![스크린샷 2023-10-31 오전 1.35.23.png](/assets/images/2023-11-26-make_a_video_text_to_video_generation_without_text_video_data/%25e1%2584%2589%25e1%2585%25b3%25e1%2584%258f%25e1%2585%25b3%25e1%2584%2585%25e1%2585%25b5%25e1%2586%25ab%25e1%2584%2589%25e1%2585%25a3%25e1%2586%25ba_2023-10-31_%25e1%2584%258b%25e1%2585%25a9%25e1%2584%258c%25e1%2585%25a5%25e1%2586%25ab_1.35.23.png)
 
-- [“Video Diffusion Models**”**](https://arxiv.org/abs/2204.03458)에 영감을 받아 dimension decomposition 전략을 attention layer에 확장하였다.
+- [“Video Diffusion Models”](https://arxiv.org/abs/2204.03458)에 영감을 받아 dimension decomposition 전략을 attention layer에 확장하였다.
 - Pseudo-3D convolutional layer처럼 각각의 spatial attenion layer를 쌓아, 전체 spatiotemporal attention layer를 근사화하는 temporal attention layer를 쌓는다.
 - Pseudo-3D attention layer
     
@@ -201,14 +195,10 @@ tags:
                 else:
                     x = rearrange(x, 'b (h w) c -> b c h w', h = h, w = w)
         
-                if enable_time:
-        
-                    x = rearrange(x, 'b c f h w -> (b h w) f c') #[bXhXw, f, c] 
-        
-                    time_rel_pos_bias = self.temporal_rel_pos_bias(x.shape[1]) if exists(self.temporal_rel_pos_bias) else None
-        
-                    x = self.temporal_attn(x, rel_pos_bias = time_rel_pos_bias) + x
-        
+                if enable_time:   
+                    x = rearrange(x, 'b c f h w -> (b h w) f c') #[bXhXw, f, c]      
+                    time_rel_pos_bias = self.temporal_rel_pos_bias(x.shape[1]) if exists(self.temporal_rel_pos_bias) else None      
+                    x = self.temporal_attn(x, rel_pos_bias = time_rel_pos_bias) + x       
                     x = rearrange(x, '(b h w) f c -> b c f h w', w = w, h = h)
         
                 if self.has_feed_forward:
@@ -330,27 +320,19 @@ tags:
 
 ## 4.3 Qualitative Results
 
-![T2V Generation 결과. 맨 위: VDM, 가운데: CogVideo, 맨 아래: Make-A-Video
-→ Make-A-Video가 모션의 일관성을 유지하면서 더 풍부한 콘텐츠를 생성할 수 있다.](Make-A-Video%20Text-to-Video%20Generation%20without%20Text%20b637408238284813ad6c570451dbe2db/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-11-01_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_2.13.16.png)
 
-T2V Generation 결과. 맨 위: VDM, 가운데: CogVideo, 맨 아래: Make-A-Video
-→ Make-A-Video가 모션의 일관성을 유지하면서 더 풍부한 콘텐츠를 생성할 수 있다.
 
-![이미지에 mask frame interpolation 및 extrpolation network ↑F를 적용한 결과
+{% include figure image_path="/assets/images/2023-11-26-make_a_video_text_to_video_generation_without_text_video_data/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-11-01_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_2.13.16.png" caption="T2V Generation 결과. 맨 위: VDM, 가운데: CogVideo, 맨 아래: Make-A-Video
+→ Make-A-Video가 모션의 일관성을 유지하면서 더 풍부한 콘텐츠를 생성할 수 있다." %}
+
+
+{% include figure image_path="/assets/images/2023-11-26-make_a_video_text_to_video_generation_without_text_video_data/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-11-01_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_2.16.47.png" caption="이미지에 mask frame interpolation 및 extrpolation network ↑F를 적용한 결과
 가장 왼쪽에 입력 이미지가 주어지면, 이를 동영상으로 애니메이션화 함 
-사용자는 자신의 이미지를 사용하여 동영상을 생성할 수 있으며, 생성된 동영상을 개인화하고 직접 제어할 수 있음 ](Make-A-Video%20Text-to-Video%20Generation%20without%20Text%20b637408238284813ad6c570451dbe2db/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-11-01_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_2.16.47.png)
+사용자는 자신의 이미지를 사용하여 동영상을 생성할 수 있으며, 생성된 동영상을 개인화하고 직접 제어할 수 있음" %}
 
-이미지에 mask frame interpolation 및 extrpolation network ↑F를 적용한 결과
-가장 왼쪽에 입력 이미지가 주어지면, 이를 동영상으로 애니메이션화 함 
-사용자는 자신의 이미지를 사용하여 동영상을 생성할 수 있으며, 생성된 동영상을 개인화하고 직접 제어할 수 있음 
-
-![두 이미지 사이의 interpolation 결과. 왼쪽: FILM, 오른쪽: 본 논문의 approach 
+{% include figure image_path="/assets/images/2023-11-26-make_a_video_text_to_video_generation_without_text_video_data/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-11-01_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_2.20.55.png" caption="두 이미지 사이의 interpolation 결과. 왼쪽: FILM, 오른쪽: 본 논문의 approach 
 FILM →  실제 움직이는 object에 대한 이해 없이 프레임을 부드럽게 전환하기만 함. 
-본 논문의 approach → 의미론적으로 더 의미있는 interpolation을 만듦 ](Make-A-Video%20Text-to-Video%20Generation%20without%20Text%20b637408238284813ad6c570451dbe2db/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-11-01_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_2.20.55.png)
-
-두 이미지 사이의 interpolation 결과. 왼쪽: FILM, 오른쪽: 본 논문의 approach 
-FILM →  실제 움직이는 object에 대한 이해 없이 프레임을 부드럽게 전환하기만 함. 
-본 논문의 approach → 의미론적으로 더 의미있는 interpolation을 만듦 
+본 논문의 approach → 의미론적으로 더 의미있는 interpolation을 만듦" %}
 
 ![비디오 변형 예시. 위: 원본 비디오, 아래: 새로운 비디오 ](/assets/images/2023-11-26-make_a_video_text_to_video_generation_without_text_video_data/%25e1%2584%2589%25e1%2585%25b3%25e1%2584%258f%25e1%2585%25b3%25e1%2584%2585%25e1%2585%25b5%25e1%2586%25ab%25e1%2584%2589%25e1%2585%25a3%25e1%2586%25ba_2023-11-01_%25e1%2584%258b%25e1%2585%25a9%25e1%2584%2592%25e1%2585%25ae_2.24.17.png)
 
@@ -362,7 +344,3 @@ FILM →  실제 움직이는 object에 대한 이해 없이 프레임을 부드
 
 - 주변 세계로부터 지식을 배우는 human intelligence처럼 generative system도 인간의 학습 방식을 모방할 수 있다면, 더욱 창의적이고 유용할 것이다.
 - 연구자들은 비지도 학습을 통해 훨씬 더 많은 동영상에서 세계의 dynamic을 학습함으로써 기존의 한계를 극복할 수 있다.
-
-# 참고 자료
-
-- [https://sanghyu.tistory.com/24](https://sanghyu.tistory.com/24)
