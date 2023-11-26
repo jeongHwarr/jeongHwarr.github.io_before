@@ -220,8 +220,6 @@ plugins:
   - jekyll-gist
   - jekyll-feed
   - jekyll-include-cache
-  - prism:
-      mode: 'default'  # 또는 'line-numbers', 'line-highlight', 'copy-to-clipboard'
 
 # mimic GitHub Pages with --safe
 whitelist:

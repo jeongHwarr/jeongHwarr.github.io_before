@@ -9,32 +9,8 @@
 <!-- https://t.co/dKP3o1e -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-
 <script>
   document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
-
-
-  document.addEventListener('DOMContentLoaded', (event) => {
-    // Add a copy button to code blocks
-    document.querySelectorAll('pre code').forEach((codeBlock) => {
-      const button = document.createElement('button');
-      button.className = 'copy-button';
-      button.textContent = 'Copy';
-
-      codeBlock.parentNode.appendChild(button);
-
-      button.addEventListener('click', () => {
-        const textArea = document.createElement('textarea');
-        textArea.value = codeBlock.textContent;
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-      });
-    });
-  });
-
 </script>
 
 <!-- For all browsers -->
