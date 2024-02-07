@@ -47,7 +47,7 @@ toc_sticky: true
 
 이전에 소개 드렸던 Make-a-Video도 다음과 같은 방식을 사용한다고 보면 될 것 같습니다. 
 
-    {% include figure image_path="/assets/images/2023-11-26-make_a_video_text_to_video_generation_without_text_video_data/make_a_video_architecture.png" caption="Make-a-Video 구조"%}
+{% include figure image_path="/assets/images/2023-11-26-make_a_video_text_to_video_generation_without_text_video_data/make_a_video_architecture.png" caption="Make-a-Video 구조"%}
 
 위와 같이 **특정 freame에 대해서만 영상을 만들어내고 그 사이는 frame interpolation을 통해 채우는 것이 기존 T2V 접근 방식**이었습니다. 하지만 본 논문에서는 이와 같은 방법은 **일관적인 모션을 생성하는 면에서는 제한이 있다**고 합니다. 따라서 아래의 방법으로 접근하여 해당 문제를 해결하려고 합니다.
 
@@ -115,7 +115,7 @@ T2I 구조에 temporal block을 넣고, 사전학습된 각 resizing module 뒤�
 Multidiffusion은 다음의 과정으로 이루어집니다.
 먼저, Noisy 입력 비디오를 서로 겹치는 segment로 나눕니다. 즉 아래의 수식으로 표현 될 수 있습니다.
 
-$J\in\R^{H\times W\times T \times 3}$ → $\{J_i\}_{i=1}^N$, where $J_i\in\R^{H\times W\times T’ \times 3}$ ($T’<T$)
+$J\in\reals^{H\times W\times T \times 3}$ → $\{J_i\}_{i=1}^N$, where $J_i\in\reals^{H\times W\times T’ \times 3}$ ($T’<T$)
 
 그리고 세그먼트별 SSR 예측 결과인 {$\Phi(J_i)$}을 조정하기 위해, denoising step의 결과를 아래의 최적화 문제의 해로 정의한다
 
