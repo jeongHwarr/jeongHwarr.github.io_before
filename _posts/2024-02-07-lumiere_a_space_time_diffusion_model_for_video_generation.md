@@ -117,7 +117,7 @@ Multidiffusion은 다음의 과정으로 이루어집니다.
 
 $J\in\reals^{H\times W\times T \times 3}$ → $\{J_i\}_{i=1}^N$, where $J_i\in\reals^{H\times W\times T’ \times 3}$ ($T’<T$)
 
-그리고 세그먼트별 SSR 예측 결과인 {$\Phi(J_i)$}을 조정하기 위해, denoising step의 결과를 아래의 최적화 문제의 해로 정의한다
+그리고 세그먼트별 SSR 예측 결과인 {$\Phi(J_i)$}을 조정하기 위해, denoising step의 결과를 아래의 최적화 문제의 해로 정의합니다. 
 
 $$
 \argmin_{J'}\sum_{i=1}^n||J'-\Phi(J_i)||^2
@@ -150,7 +150,7 @@ $$
 
 해당 모델은 추가적인 입력 신호(이미지나 마스크)를 넣어서 조건에 따라 비디오 생성을 할 수 있는 모델로 확장할 수 있다고 합니다. 이를 위해 Noisy video $J$ (3채널), masked conditioning video $C$ (3채널), 바이너리 마스크 $M$(1채널)을 연결하여 7채널 짜리 입력을 만듭니다. 
 
-즉, $<J,C,M>\in \R^{T \times H \times W \times 7}$가 됩니다. 이를 위해 첫번째 컨벌루션 레이어의 채널 축을 3에서 7로 확장하였고, $J$로는 학습하려는 비디오의 noisy version, $C$로는 clean video의 마스크된 버전을 넣어서 파인튜닝 하였다고 합니다. 이를 통해 모델이 마스킹된 콘텐츠만 애니메이션을 적용하면서 C의 마스킹되지 않은 정보를 출력 비디오에 복사하는 방법을 학습할 수 있었다고 합니다. 
+즉, $<J,C,M>\in \reals^{T \times H \times W \times 7}$가 됩니다. 이를 위해 첫번째 컨벌루션 레이어의 채널 축을 3에서 7로 확장하였고, $J$로는 학습하려는 비디오의 noisy version, $C$로는 clean video의 마스크된 버전을 넣어서 파인튜닝 하였다고 합니다. 이를 통해 모델이 마스킹된 콘텐츠만 애니메이션을 적용하면서 C의 마스킹되지 않은 정보를 출력 비디오에 복사하는 방법을 학습할 수 있었다고 합니다. 
     
 
 ## 4-3. Image-to-Video
